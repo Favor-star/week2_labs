@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+:root {
+  --bg_color: white;
+  --baseColor: blue;
+  --dangerColor: red;
+  --accentColor: green;
+}
+body {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--bg_color);
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+}
+main {
+  width: 100%;
+  max-width: 1024px;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+}
+header {
+  text-transform: uppercase;
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--accentColor);
+}
+.add_todo {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.add_todo_header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap-reverse;
+  border: 1px solid red;
+  gap: 20px;
+}
+.add_todo_header button {
+  padding: 8px 15px;
+  border-radius: 10px;
+  outline: none;
+}
+.sort_filter_div {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  max-width: 300px;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: flex-end;
+  border: 1px solid yellowgreen;
+}
+.sort_filter_div button {
+  flex: 1;
+  border: 2px solid var(--accentColor);
+  color: var(--accentColor);
+  font-weight: 700;
+}
+#add_to_do_opener {
+  background-color: var(--accentColor);
+  color: white;
+  border: none;
+}
+.todo_list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1024px;
+}
+.list_header {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 2px;
+  border-bottom: 2px solid black;
+}
+.single_list {
+  display: flex;
+  width: 100%;
+}
+.single_list > * {
+  flex: 1;
+  padding: 10px 2px;
+}
+.single_list:not(.list_header):nth-child(even) {
+  background-color: beige;
+  border-radius: 5px;
+}
+.list_no {
+  max-width: 40px;
+  padding-inline-start: 10px;
+}
+.list_title {
+  /* min-width: 400px; */
+  width: 100%;
+}
+.list_actions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: end;
+  flex-wrap: wrap;
+  /* width: 100%; */
+  gap: 10px;
+  max-width: 250px;
+  padding-inline-end: 10px;
+}
+.list_status {
+  max-width: 140px;
+}
+.list_date {
+  max-width: 160px;
+}
+.list_actions button {
+  padding: 10px 10px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  height: fit-content;
+  flex: 1;
+  text-wrap: no-wrap;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.133);
+}
+.mark_button {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.mark_as_text {
+  font-size: 12px;
+}
+#delete_btn {
+  background-color: var(--dangerColor);
+  color: white;
+  font-weight: 500;
+}
