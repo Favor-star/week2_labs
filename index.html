@@ -5,27 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
     <script src="index.js" defer></script>
-    <title>TO DO App</title>
+    <title>TO DO App by Favor</title>
   </head>
   <body>
-    <header>TO DO app</header>
+    <header>TO DO app <span class="skiii">by Favor</span></header>
     <main>
       <section class="add_todo">
-        <div class="add_todo_header">
-          <button id="add_to_do_opener">Add a TODO</button>
-          <span class="sort_filter_div">
-            <button id="sort_button">Sort by</button
-            ><button iid="filter_btn">Filter by</button>
+        <div class="add_todo_inputs">
+          <span class="input_wrapper">
+            <label for="todo_date">Add a date</label>
+            <input
+              type="text"
+              id="todo_title"
+              placeholder="Enter your TODO title"
+            />
+            <p id="title_error" class="error_input"></p>
           </span>
+          <span class="input_wrapper">
+            <label for="todo_date">Add a date</label>
+            <input type="date" id="todo_date" placeholder="Enter the date" />
+            <p id="date_error" class="error_input"></p>
+          </span>
+          <button id="add_todo_btn">Add TODO</button>
         </div>
+        <!-- <div class="add_todo_header"> -->
+        <!-- <button id="add_to_do_opener">Add a TODO</button> -->
+        <span class="sort_filter_div">
+          <span class="modal_wrapper">
+            <button id="sort_button">Sort by</button>
+            <span class="modal hidden_modal" id="sort_modal" data-modal="sort">
+              <p id="date_added">Date added Ascending</p>
+              <p id="date_added_desc">Date added Descending</p>
+              <p id="completion_status">Completion Status</p>
+            </span>
+          </span>
+          <span class="modal_wrapper" style="display: none">
+            <button id="filter_btn">Filter by</button>
+            <span
+              class="modal hidden_modal"
+              id="filter_modal"
+              data-modal="filter"
+            >
+              <p id="completed">Completed</p>
+              <p id="non_completed">Non completed</p>
+            </span>
+          </span>
+        </span>
+        <!-- </div> -->
       </section>
       <section class="todo_list">
         <div class="single_list list_header">
+          <p class="list_checkbox title"></p>
           <p class="list_no title">1.</p>
           <p class="list_date title">Date added</p>
           <p class="list_title title">Task name</p>
           <p class="list_status title">Status</p>
           <p class="list_actions title">Actions</p>
+        </div>
+        <div class="todo_list items">
+          <p class="" style="margin-top: 10px; color: gray; font-style: italic">
+            Loading ...
+          </p>
         </div>
         <!-- <div class="single_list list_item">
           <p class="list_no">1.</p>
@@ -40,6 +80,22 @@
             <button id="delete_btn">Delete</button>
           </div>
         </div> -->
+      </section>
+      <section class="edit_popup_wrapper hidden_modal">
+        <section class="edit_popup">
+          <span class="input_wrapper">
+            <label for="edit_title" class="">Edit Title</label>
+            <input type="text" name="edit_title" id="edit_title" />
+          </span>
+          <span class="input_wrapper">
+            <label for="edit_date"> Edit Date </label>
+            <input type="date" name="edit_date" id="edit_date" />
+          </span>
+          <div class="edit_buttons">
+            <button id="close_edit">Close</button>
+            <button id="save_edit">Save</button>
+          </div>
+        </section>
       </section>
     </main>
   </body>

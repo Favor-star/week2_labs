@@ -8,20 +8,21 @@
   font-family: "Poppins", sans-serif;
 }
 :root {
-  --bg_color: white;
-  --baseColor: blue;
+  --secondary: whitesmoke;
+  --baseColor: white;
   --dangerColor: red;
   --accentColor: green;
 }
 body {
   width: 100vw;
   min-height: 100vh;
-  background-color: var(--bg_color);
-
+  background-color: var(--baseColor);
+  position: relative;
   display: flex;
   justify-content: start;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 20px;
 }
 main {
   width: 100%;
@@ -38,42 +39,48 @@ header {
   font-weight: 600;
   color: var(--accentColor);
 }
+.skiii {
+  font-size: 10px;
+}
 .add_todo {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
-.add_todo_header {
+/* .add_todo_header {
   display: flex;
   width: 100%;
   justify-content: space-between;
   flex-wrap: wrap-reverse;
   border: 1px solid red;
   gap: 20px;
-}
-.add_todo_header button {
-  padding: 8px 15px;
-  border-radius: 10px;
-  outline: none;
-}
+} */
+
 .sort_filter_div {
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
   gap: 20px;
-  max-width: 300px;
+  max-width: 1024px;
   width: 100%;
   justify-content: flex-end;
   align-items: flex-end;
-  border: 1px solid yellowgreen;
 }
 .sort_filter_div button {
   flex: 1;
-  border: 2px solid var(--accentColor);
+  background-color: var(--secondary);
   color: var(--accentColor);
-  font-weight: 700;
+  padding: 8px 25px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  transition: all 0.1 ease-in-out;
+}
+.sort_filter_div button:hover {
+  background-color: rgb(124, 124, 124);
+  color: var(--baseColor);
 }
 #add_to_do_opener {
   background-color: var(--accentColor);
-  color: white;
+  color: var(--baseColor);
   border: none;
 }
 .todo_list {
@@ -90,6 +97,8 @@ header {
 }
 .single_list {
   display: flex;
+  justify-content: flex-start;
+  align-items: start;
   width: 100%;
 }
 .single_list > * {
@@ -97,13 +106,23 @@ header {
   padding: 10px 2px;
 }
 .single_list:not(.list_header):nth-child(even) {
-  background-color: beige;
+  background-color: var(--secondary);
   border-radius: 5px;
 }
+
 .list_no {
   max-width: 40px;
   padding-inline-start: 10px;
 }
+.list_checkbox {
+  max-width: 20px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  margin-top: 10px;
+
+  padding-inline-start: 10px;
+}
+
 .list_title {
   /* min-width: 400px; */
   width: 100%;
@@ -131,7 +150,6 @@ header {
   border: none;
   height: fit-content;
   flex: 1;
-  text-wrap: no-wrap;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.133);
 }
 .mark_button {
@@ -139,6 +157,13 @@ header {
   flex-direction: column;
   gap: 2px;
   flex: 1;
+}
+.mark_button button {
+  border: 1px solid var(--secondary);
+}
+.mark_button button:hover {
+  box-shadow: 1px 1px 20px 1px rgba(100, 100, 100, 0.133);
+  border: 1px solid rgb(229, 229, 229);
 }
 
 .mark_as_text {
@@ -148,4 +173,154 @@ header {
   background-color: var(--dangerColor);
   color: white;
   font-weight: 500;
+}
+#delete_btn:hover {
+  box-shadow: 1px 1px 10px 1px rgba(255, 0, 0, 0.529);
+}
+
+.modal_wrapper {
+  position: relative;
+}
+.modal {
+  position: absolute;
+  top: 105%;
+  right: 0;
+  background-color: gray;
+  color: white;
+  width: 300px;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 20px 10px rgba(128, 128, 128, 0.5);
+}
+.modal p {
+  padding: 8px;
+  border-radius: 5px;
+}
+.modal p:hover {
+  background-color: var(--bg_color);
+  cursor: pointer;
+  color: var(--accentColor);
+}
+.hidden_modal {
+  display: none !important;
+}
+
+.add_todo_inputs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  margin-top: 30px;
+  border-radius: 10px;
+  border: 2px dashed var(--accentColor);
+  background-color: whitesmoke;
+  padding: 30px 20px;
+}
+.input_wrapper > input {
+  flex: 1;
+  padding: 8px 5px;
+  border: none;
+  border-radius: 5px;
+  outline-color: var(--accentColor);
+}
+.add_todo_inputs > *:nth-child(3) {
+  max-width: 200px;
+}
+.add_todo_inputs button {
+  flex: 1;
+  padding: 10px 5px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  height: fit-content;
+  flex: 1;
+  min-width: 80px;
+  background-color: var(--accentColor);
+  color: var(--baseColor);
+  text-wrap: no-wrap;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.133);
+  transition: all 0.1s ease-in-out;
+  margin-bottom: 10px;
+}
+.add_todo_inputs button:hover {
+  box-shadow: 1px 1px 20px 5px rgba(0, 0, 0, 0.133);
+}
+.add_todo_inputs button:disabled {
+  background-color: gray;
+  color: white;
+  cursor: not-allowed;
+}
+.input_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+.input_wrapper label {
+  font-size: 14px;
+}
+.error_input {
+  color: var(--dangerColor);
+  font-size: 10px;
+  height: 10px;
+}
+.edit_popup_wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.377);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.edit_popup {
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: var(--secondary);
+  padding: 20px;
+  border-radius: 20px;
+}
+.edit_buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+  gap: 10px;
+}
+.edit_buttons > * {
+  padding: 5px 20px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+}
+#close_edit {
+  background-color: var(--secondary);
+  border: 1px solid var(--dangerColor);
+  color: var(--dangerColor);
+  transition: all 0.1s ease-in-out;
+}
+#close_edit:hover {
+  background-color: var(--dangerColor);
+  color: var(--baseColor);
+}
+#save_edit {
+  background-color: var(--accentColor);
+  color: var(--baseColor);
+  transition: all 0.1s ease-in-out;
+}
+#save_edit:hover {
+  background-color: rgb(0, 100, 0);
+}
+input[type="checkbox"] {
+  cursor: pointer;
+  accent-color: var(--accentColor);
 }
